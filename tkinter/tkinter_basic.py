@@ -38,5 +38,7 @@ t3 = Text(window, height=1, width=20)
 t3.grid(row=1, column=2)
 
 
+
+
 # This makes sure to keep the main window open
 window.mainloop()
