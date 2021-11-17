@@ -33,7 +33,8 @@ def get_selected_row(event):
     except IndexError:
         pass
 
-def veiw_command():
+
+def view_command():
     list1.delete(0, END)
     for row in reader_backend.view():
         list1.insert(END, row)  # put a tuple from db to the list
@@ -57,8 +58,6 @@ def delete_command():
 
 def update_command():
     reader_backend.update(selected_tuple[0], title_text.get(), Author_text.get(), Year_text.get(), ISBN_text.get())
-
-
 
 
 window = Tk()
@@ -104,7 +103,7 @@ sb1.configure(command=list1.yview)
 
 list1.bind('<<ListboxSelect>>', get_selected_row)
 
-b1 = Button(window, text='View All', command=veiw_command, width=12)
+b1 = Button(window, text='View All', command=view_command, width=12)
 b1.grid(row=2, column=3)
 
 b2 = Button(window, text='Search entry', command=search_command, width=12)
