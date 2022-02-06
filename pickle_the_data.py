@@ -1,36 +1,21 @@
 import pickle
 from random import randint
-
-a = {"ss": 123}
-
-
-def qwe123():
-    with open('data.pickle', 'wb') as file:
-        pickle.dump(a, file)
-
-    with open('data.pickle', 'rb') as file_2:
-        pickled_data = pickle.load(file_2)
-
-    return pickled_data
+import logging
 
 
-print(type(qwe123()))
+
+def deserialization(x):
+    deserialized = pickle.loads(x)
+    logging.info(f"blob {x} has been loaded as {deserialized}")
+    return deserialized
 
 
-def pickling_the_dictionary(x):
-    filename = f'{randint(0, 10000)}.pickle'
+def serialization(x):
+    serialized = pickle.dumps(x)
+    filename = f"serialized_dict_{randint(0,1000)}"
     with open(filename, 'wb') as file:
-        pickle.dump(x, file)
-        file.close()
-    print("Your file is pickled")
-    return filename
+        file.write(serialized)
+    return serialized
 
-
-def unpickling_the_dictionary(x):
-    content = open(x, 'rb')
-    pickled_out = pickle.load(content)
-    return pickled_out
-
-
-print(type(pickling_the_dictionary(a)))
-print(type(unpickling_the_dictionary(pickling_the_dictionary(a))))
+# t = Tag_counter()
+# serialization(t.tags_to_dict())
